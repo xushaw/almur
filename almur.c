@@ -8,7 +8,8 @@ int main(int argc, char *argv[])
     int fd, file=0;
     int i,j,k;
     int count=0;
-
+    
+    //Проверяем количество входных данных. Должно быть ./a.out -f filename
     if (argc >= 2)  {
         for ( i=0; i<argc; i++) {
             if ( argv[i][0] == '-' && argv[i][1] == 'f')    {
@@ -32,7 +33,7 @@ int main(int argc, char *argv[])
             
             k = lseek(fd, 0.0, 2);
             printf("Size of file: %d\n", k);
-            
+            //Выделяем память под массив-строку
             char *tmpstr = (char*) malloc(sizeof(char)*k);
             printf("String created!\n");
 
@@ -51,6 +52,7 @@ int main(int argc, char *argv[])
 
                 printf("Numbers in file: %d\n", count);
                 
+                //Выделяем память под массив float, куда будем записывать файлы.
                 float *array =  calloc(count, sizeof(float));
                 printf("Float array created!\n");
 
